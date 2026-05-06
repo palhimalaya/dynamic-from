@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import surveyRoutes from "./routes/survey.routes";
+import responseRoutes from "./routes/response.routes";
+import analyticsRoutes from "./routes/analytics.routes";
 
 dotenv.config();
 
@@ -15,6 +18,10 @@ app.get("/", (_, res) => {
     message: "Survey API Running",
   });
 });
+
+app.use("/api/surveys", surveyRoutes);
+app.use("/api/surveys", responseRoutes);
+app.use("/api/surveys", analyticsRoutes);
 
 const PORT = process.env.PORT || 5000;
 
